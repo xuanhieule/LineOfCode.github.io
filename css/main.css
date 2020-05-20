@@ -176,7 +176,7 @@
         font-weight: 900;
         
     }
-    .texth1{
-        font-weight: 900;
-        
-    }
+   h1.text-center.texth1 {
+    font-size: 6rem;
+    font-weight: 900;
+}
