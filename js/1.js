@@ -31,9 +31,9 @@ input.addEventListener('change', function () {
 
         // read file txt
         if (txt.exec(input.files[0].name) || docx.exec(input.files[0].name)) {
-            pName.innerHTML = 'Name: ' + input.files[0].name;
-            pSize.innerHTML = 'Size: ' + input.files[0].size + ' byte';
-            prs.innerHTML = 'Line of code (LOC): ' + lines.length;
+            pName.innerHTML = input.files[0].name;
+            pSize.innerHTML = input.files[0].size + ' byte';
+            prs.innerHTML = lines.length;
         }
         // read fiel java
         else {
