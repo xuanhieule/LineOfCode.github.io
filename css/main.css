@@ -3,7 +3,10 @@
         overflow-x: hidden;
         position: relative;
     }
-
+    body{
+        background-image: url(back.jpg);
+        background-size: cover;
+    }
     .contentMain{
         height:100%;
         width: 100%;
