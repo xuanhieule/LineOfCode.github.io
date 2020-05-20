@@ -166,3 +166,12 @@ table {
       height: 50px;
       margin:10px
   }
+    .title{
+        font-size: 3.5rem;
+        padding: 30px;
+        
+    }
+    h1{
+        font-weight: 900;
+        
+    }
