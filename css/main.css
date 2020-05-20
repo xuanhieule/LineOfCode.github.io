@@ -99,13 +99,18 @@ html, body{
 .me{
     width: 10rem;
     height: 10rem;
-    background-image: url('/lineOfCode/images/logoteam.jpg');
+    background-image: url('/images/logoteam.jpg');
     background-size: cover;
     border-radius: 50%;
     
 }
 
-
+.rotate-item{
+    animation: rotate 4s linear 0s infinite;
+    -webkit-animation: rotate 4s linear 0s infinite;
+    -moz-animation: rotate2 4s linear 0s infinite;
+    -o-animation: rotate2 4s linear 0s infinite; 
+}
 
 .file-upadate{
     background-color: rgb(73,200,242);
