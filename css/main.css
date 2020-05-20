@@ -105,12 +105,7 @@ html, body{
     
 }
 
-.rotate-item{
-    animation: rotate 4s linear 0s infinite;
-    -webkit-animation: rotate 4s linear 0s infinite;
-    -moz-animation: rotate2 4s linear 0s infinite;
-    -o-animation: rotate2 4s linear 0s infinite; 
-}
+
 
 .file-upadate{
     background-color: rgb(73,200,242);
