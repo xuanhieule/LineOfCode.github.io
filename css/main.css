@@ -99,7 +99,7 @@ html, body{
 .me{
     width: 10rem;
     height: 10rem;
-    background-image: url('/LineOfCode.github.io/images/logoteam.jpg');
+    background-image: url('./logoteam.jpg');
     background-size: cover;
     border-radius: 50%;
     
