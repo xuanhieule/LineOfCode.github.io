@@ -17,67 +17,78 @@
 </head>
 
 <body>
-    <div class="contentMain">
-        <div class="title">
-            <h1 class="text-center texth1">LINE OF CODE</h1>
-        </div>
-        <div class="border-me ">
-            <div class="me rotate-item">
-
-            </div>    
-        </div>
-        <div class='file-upadate'>
-            <div class="bor">
-                <div class="upload-btn-wrapper">
-                    <button class="btn">Upload a file</button>
-                    <input type="file" name="myfile" />
-                  </div>
-                
-                
-                
-               
-                
-               
-               
-            </div>
-
-        </div>
-        <div class="divtable">
-            <table style="width:90%">
-                <tr>
-                  <th>File name</th>
-                  <th>Size</th>
-                  <th>Line of code</th>
-                  <th>Physical line of code</th>
-                  <th>Logical lines of code</th>
-                  <th>Comment line</th>
-                </tr>
-                <tr>
-                  <td class="name"></td>
-                  <td class="size"></td>
-                  <td class="loc"></td>
-                  <td class="result"></td>
-                  <td class="Logic"></td>
-                  <td class="comment"></td>
-                </tr>
-                
-              </table>
-        </div>
-        
-        <div class="sidebar-left ">
-            <h3 class="text-center display-3">TEAM</h3>
-            <ul class="list-group">
-                <li class="list-group-item"><img class="imgteam" src="images/hieu.jpg" alt=""> Lê Xuân Hiếu</li>
-                <li class="list-group-item"><img class="imgteam" src="images/ha.jpg" alt=""> Lê Thanh Hà</li>
-                <li class="list-group-item"><img class="imgteam" src="images/my.jpg" alt=""> Ngô Ngọc Mỹ</li>
-            </ul>
-        </div>
+    <div class="container-fluid">
         <div class="layout"></div>
+        <div class="row">
+            <div class="col-sm-2">
+                <h3 class="text-center display-3">TEAM</h3>
+                <ul class="list-group">
+                    <a href="https://www.facebook.com/xuanhieu.le.775" class="text-deco" target="_blank"
+                        rel="noopener noreferrer">
+                        <li class="list-group-item"><img class="imgteam" src="images/hieu.jpg" alt=""> Lê Xuân Hiếu</li>
+                    </a>
+                    <a href="https://www.facebook.com/lethanhhadtu" class="text-deco" target="_blank"
+                        rel="noopener noreferrer">
+                        <li class="list-group-item"><img class="imgteam" src="images/ha.jpg" alt=""> Lê Thanh Hà</li>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100004599408370" class="text-deco" target="_blank"
+                        rel="noopener noreferrer">
+                        <li class="list-group-item"><img class="imgteam" src="images/my.jpg" alt=""> Ngô Ngọc Mỹ</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="col-sm-10">
+                <!--Nut xoay-->
+
+                <div class="title">
+                    <h1 class="text-center">LINE OF CODE</h1>
+                </div>
+
+                <!--title-->
+                <div class="border-me ">
+                    <div class="me rotate-item">
+
+                    </div>
+                </div>
+
+                <!--Upload-->
+                <div class='file-upadate'>
+                    <div class="bor">
+                        <div class="upload-btn-wrapper">
+                            <button class="btn">Upload a file</button>
+                            <input type="file" name="myfile" />
+                          </div>          
+                    </div>
+        
+                </div>
+
+                <!--table-->
+                <div class="divtable">
+                    <table style="width:90%">
+                        <tr>
+                            <th>File name</th>
+                            <th>Size</th>
+                            <th>Line of code</th>
+                            <th>Physical line of code</th>
+                            <th>Logical lines of code</th>
+                            <th>Comment line</th>
+                        </tr>
+                        <tr>
+                            <td class="name"></td>
+                            <td class="size"></td>
+                            <td class="loc"></td>
+                            <td class="result"></td>
+                            <td class="Logic"></td>
+                            <td class="comment"></td>
+                        </tr>
+        
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-
-
-
-
 </body>
 <script src="js/1.js"></script>
 
