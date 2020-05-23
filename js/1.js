@@ -32,7 +32,7 @@ input.addEventListener('change', function () {
         // read file txt
         if (txt.exec(input.files[0].name) || docx.exec(input.files[0].name)) {
             pName.innerHTML = input.files[0].name;
-            pSize.innerHTML = input.files[0].size + ' byte';
+            pSize.innerHTML =input.files[0].size + ' byte';
             prs.innerHTML = lines.length;
         }
         // read fiel java
@@ -93,14 +93,19 @@ input.addEventListener('change', function () {
 // JS FRONTEND
 document.addEventListener("DOMContentLoaded",function(){
     var btn = document.querySelector('.border-me');
-    var contentMain = document.querySelectorAll(".contentMain");
+    var sidebar = document.querySelectorAll(".col-sm-2");
+    var contentMain = document.querySelectorAll(".col-sm-10");
     var layout = document.querySelectorAll(".layout");
     btn.onclick = function(){
-        contentMain[0].classList.toggle('push');
+        contentMain[0].classList.toggle('push-content');
+        sidebar[0].classList.toggle('push-bar');
         layout[0].classList.toggle('unhide-layout');
+        btn.classList.toggle('push-btn');
     }
     layout[0].onclick = function(){
-        contentMain[0].classList.toggle('push');
+        contentMain[0].classList.toggle('push-content');
+        sidebar[0].classList.toggle('push-bar');
         layout[0].classList.toggle('unhide-layout');
+        btn.classList.toggle('push-btn');
     }
 },false);
