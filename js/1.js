@@ -27,15 +27,15 @@ input.addEventListener('change', function () {
     reader.onload = function (e) {
         const file = e.target.result;
         var lines = file.split(/\r\n|\n/);
-        var linesjavanull = file.split(/\ n\n/);
+
 
         // read file txt
         if (txt.exec(input.files[0].name) || docx.exec(input.files[0].name)) {
             pName.innerHTML = input.files[0].name;
-            pSize.innerHTML =input.files[0].size + ' byte';
+            pSize.innerHTML = input.files[0].size + ' byte';
             prs.innerHTML = lines.length;
         }
-        // read fiel java
+        // đọc file java
         else {
             if (java.exec(input.files[0].name)) {
 
@@ -45,22 +45,50 @@ input.addEventListener('change', function () {
                         linenull++;
                     }
                 }
-                console.log(linenull);
+
 
 
                 //đếm comment line
                 for (x of lines) {
-                    if (x.indexOf('//') !== -1 || x.indexOf('/*') !== -1) {
+                    if (x.indexOf('//') !== -1) {
+                        console.log('-----------------------------------------------------------');
+                        console.log(x);
                         comment++;
                     }
                 }
+                for (var i = 0; i < lines.length; i++) {
+                    if (lines[i].indexOf('/*') !== -1) {
+                        for (var j = i; j < lines.length; j++) {
+                            if (lines[j].indexOf('*/') !== -1) {
+                                comment++;
+                                i = j;
+                                console.log('-----------------------------------------------------------');
+                                console.log(lines[j]);
+                                break;
+                            }
+                            else
+                                if (lines[j].charAt(lines[j].length - 1) === ";") {
+                                    logic--;
+                                }
+                            console.log('-----------------------------------------------------------');
+
+                            console.log(lines[j]);
+                            comment++;
+                        }
+                    }
+                }
+
 
                 // đếm các lệnh có ;
                 for (x of lines) {
                     if (x.charAt(x.length - 1) === ";") {
+                        console.log(x);
+                        console.log('-------------------------------------------');
                         logic++;
                     }
                 }
+                console.log('---------------------------------------------');
+
                 console.log("lenh co ; : " + logic);
 
                 //đếm các khối lệnh
@@ -68,10 +96,12 @@ input.addEventListener('change', function () {
                 var characters = 0;
                 for (x of lines) {
                     if (x.indexOf('{') !== -1) {
-                        //console.log(x);
+                        console.log(x);
+                        console.log('-----------------------------------------------------------------');
                         block++;
                     }
                 }
+                console.log('---------------------------------------------');
                 console.log("block: " + block);
                 var sumlogic = logic + block;
                 var sumPhy = lines.length - linenull - comment;
@@ -91,21 +121,21 @@ input.addEventListener('change', function () {
 });
 
 // JS FRONTEND
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function () {
     var btn = document.querySelector('.border-me');
     var sidebar = document.querySelectorAll(".col-sm-2");
     var contentMain = document.querySelectorAll(".col-sm-10");
     var layout = document.querySelectorAll(".layout");
-    btn.onclick = function(){
+    btn.onclick = function () {
         contentMain[0].classList.toggle('push-content');
         sidebar[0].classList.toggle('push-bar');
         layout[0].classList.toggle('unhide-layout');
         btn.classList.toggle('push-btn');
     }
-    layout[0].onclick = function(){
+    layout[0].onclick = function () {
         contentMain[0].classList.toggle('push-content');
         sidebar[0].classList.toggle('push-bar');
         layout[0].classList.toggle('unhide-layout');
         btn.classList.toggle('push-btn');
     }
-},false);
+}, false);
