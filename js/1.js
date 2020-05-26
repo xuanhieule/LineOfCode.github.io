@@ -93,9 +93,8 @@ input.addEventListener('change', function () {
 
                 //đếm các khối lệnh
                 var block = 0;
-                var characters = 0;
                 for (x of lines) {
-                    if (x.indexOf('{') !== -1) {
+                    if (x.indexOf('{') !== -1 && x.indexOf('//') === -1 ) {
                         console.log(x);
                         console.log('-----------------------------------------------------------------');
                         block++;
