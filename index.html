@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COUNT LINE OF CODE</title>
-    <link rel="shortcut icon" type="image/png" href="images/logo.png"/>
+    <link rel="shortcut icon" type="image/png" href="images/logo.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
@@ -56,16 +56,15 @@
                 <div class='file-upadate'>
                     <div class="bor">
                         <div class="upload-btn-wrapper">
-                            <button class="btn">Upload a file</button>
-                            <input type="file" name="myfile" />
-                          </div>          
+                            <input type="file" webkitdirectory mozdirectory />
+                        </div>
                     </div>
-        
+
                 </div>
 
                 <!--table-->
                 <div class="divtable">
-                    <table style="width:90%">
+                    <table style="width:90%" id="myTable">
                         <tr>
                             <th>File name</th>
                             <th>Size</th>
@@ -75,14 +74,10 @@
                             <th>Comment line</th>
                         </tr>
                         <tr>
-                            <td class="name"></td>
-                            <td class="size"></td>
-                            <td class="loc"></td>
-                            <td class="result"></td>
-                            <td class="Logic"></td>
-                            <td class="comment"></td>
+
+
                         </tr>
-        
+
                     </table>
                 </div>
 
