@@ -1,53 +1,50 @@
-var input = document.querySelector('input');
-var prs = document.querySelector('.result');
-var pName = document.querySelector('.name');
-var pSize = document.querySelector('.size');
-var pComment = document.querySelector('.comment');
-var pLogic = document.querySelector('.Logic');
-var pLoc = document.querySelector('.loc');
+function addRow(tableId, name, size, loc, ploc, lloc, comment) {
+    var row = tableId.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
+    let nameText = document.createTextNode(name);
+    let sizeText = document.createTextNode(size);
+    let locText = document.createTextNode(loc);
+    let plocText = document.createTextNode(ploc);
+    let llocText = document.createTextNode(lloc);
+    let commentText = document.createTextNode(comment);
+    cell1.appendChild(nameText);
+    cell2.appendChild(sizeText);
+    cell3.appendChild(locText);
+    cell4.appendChild(plocText);
+    cell5.appendChild(llocText);
+    cell6.appendChild(commentText);
+}
 
-input.addEventListener('change', function () {
-    //reset
-    pName.innerHTML = '';
-    pSize.innerHTML = '';
-    prs.innerHTML = '';
-
-    var linenull = 0;
-    var comment = 0;
-    var logic = 0;
-    var files = input.files;
+document.querySelector('input').addEventListener("change", function (event) {
+    var table = document.getElementById("myTable");
+    var lines;
+    let fileArr = event.target.files;
     var java = /(\.java)/;
-    var txt = /(\.txt)/;
-    var docx = /(\.docx)/;
-    if (files.length == 0) {
-        prs.innerHTML = '0';
-    };
-    const file = files[0];
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        const file = e.target.result;
-        var lines = file.split(/\r\n|\n/);
-
-
-        // read file txt
-        if (txt.exec(input.files[0].name) || docx.exec(input.files[0].name)) {
-            pName.innerHTML = input.files[0].name;
-            pSize.innerHTML = input.files[0].size + ' byte';
-            prs.innerHTML = lines.length;
-        }
-        // đọc file java
-        else {
-            if (java.exec(input.files[0].name)) {
-
+    for (var i = 0; i < fileArr.length; i++) {
+        var linenull = 0;
+        var comment = 0;
+        var logic = 0;
+        var block = 0;
+        var ploc = 0;
+        var name, size;
+        if (java.exec(fileArr[i].name)) {
+            name = fileArr[i].name;
+            size = fileArr[i].size + " byte";
+            const reader = new FileReader();
+            reader.readAsText(fileArr[i]);
+            reader.onload = function (e) {
+                lines = e.target.result.split(/\r\n|\n/);
                 //đếm các dong trống
                 for (x of lines) {
                     if (x.trim() === '') {
                         linenull++;
                     }
                 }
-
-
-
                 //đếm comment line
                 for (x of lines) {
                     if (x.indexOf('//') !== -1) {
@@ -71,13 +68,12 @@ input.addEventListener('change', function () {
                                     logic--;
                                 }
                             console.log('-----------------------------------------------------------');
-
                             console.log(lines[j]);
                             comment++;
                         }
                     }
                 }
-
+                console.log("comment: " + comment);
 
                 // đếm các lệnh có ;
                 for (x of lines) {
@@ -88,36 +84,38 @@ input.addEventListener('change', function () {
                     }
                 }
                 console.log('---------------------------------------------');
-
                 console.log("lenh co ; : " + logic);
-
                 //đếm các khối lệnh
-                var block = 0;
                 for (x of lines) {
-                    if (x.indexOf('{') !== -1 && x.indexOf('//') === -1 ) {
-                        console.log(x);
+                    if (x.indexOf('{') !== -1 && x.indexOf('//') === -1) {
+                        // console.log(x);
                         console.log('-----------------------------------------------------------------');
                         block++;
                     }
                 }
-                console.log('---------------------------------------------');
+                logic = logic + block;
+                ploc = lines.length - linenull - comment;
+
                 console.log("block: " + block);
-                var sumlogic = logic + block;
-                var sumPhy = lines.length - linenull - comment;
-                pName.innerHTML = input.files[0].name;
-                pSize.innerHTML = input.files[0].size + ' byte';
-                pLoc.innerHTML = lines.length;
-                prs.innerHTML = sumPhy;
-                pLogic.innerHTML = sumlogic;
-                pComment.innerHTML = comment;
+                console.log("********************************************************************************************");
+                console.log("LOC: " + lines.length);
+                console.log("PLOC: " + ploc);
+                console.log("LOGIC: " + logic);
+                console.log("COMMENT: " + comment);
+                console.log("*********************************************************************************");
+                addRow(table, name, size, lines.length, ploc, logic, comment);
+                linenull = 0;
+                comment = 0;
+                logic = 0;
+                block = 0;
+                ploc = 0;
+                console.log(name);
+                console.log(size);
             }
+
         }
-    };
-    reader.onerror = function (e) {
-        alert(e.target.error.name);
-    };
-    reader.readAsText(file);
-});
+    }
+}, false);
 
 // JS FRONTEND
 document.addEventListener("DOMContentLoaded", function () {
