@@ -1,242 +1,223 @@
-    html, body{
-        height: 100%;
-       
-        position: relative;
-        user-select: none;
-        
-    }
-    body{
-        background-image: url(back.jpg);
-        background-size: cover;
-    }
-    .container-fluid{
-        height: 100%;
-    }
-    .row{
-        height: 100%;
-    }
+html, body{
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+    user-select: none;
     
-  
-     
-    /*CSS Side bar*/
-    h3{
-        margin-top: 9rem;
-    }
+}
+body{
+    background-image: url(back.jpg);
+    background-size: cover;
+}
+.container-fluid{
+    height: 100%;
+}
+.row{
+    height: 100%;
+}
+
+
+ 
+/*CSS Side bar*/
+h3{
+    margin-top: 9rem;
+}
+
+.imgteam{
+    width: 5rem;
+    height: 5rem;
+    margin: 1rem
+}
+
+.list-group a{
+    text-decoration: none;
+}
+
+.col-sm-2{
+    height: 100%;
     
-    .imgteam{
-        width: 5rem;
-        height: 5rem;
-        margin: 1rem
-    }
-   
-    .list-group a{
-        text-decoration: none;
-    }
-
-    .col-sm-2{
-        height: 100%;
-        
-        background-color:rgb(67,205,233);
-        
-        transform: translateX(-100%);
-        z-index: 2;
-        padding: 0;
-        transition: 0.4s;
-    }
+    background-color:rgb(67,205,233);
     
+    transform: translateX(-100%);
+    z-index: 2;
+    padding: 0;
+    transition: 0.4s;
+}
 
-    .list-group-item{
-        width: 100%;
-        margin: 0;
-        background-color: rgb(67,205,233) ; 
-        color:white;
-        text-transform: uppercase;
-        height: 9rem;
-        font-size: 1.4rem;
-    }
-    /*CSS LAYOUT*/
+
+.list-group-item{
+    width: 100%;
+    margin: 0;
+    background-color: rgb(67,205,233) ; 
+    color:white;
+    text-transform: uppercase;
+    height: 9rem;
+    font-size: 1.5rem;
+}
+/*CSS LAYOUT*/
+
+.layout{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(15, 15, 15, 0.5);
+    position: fixed;
+    top:0;
+    display: none;
+    cursor: pointer;
+    transition: 0.4s;
+
+}
+.unhide-layout{
+    display: block;
+}
+
+/*CSS Button*/
+
+
+
+.col-sm-10{
+    transform: translateX(-10%);
+    transition: 0.5s;
+}
+.border-me{
+    width: 130rem;
+    height: 10rem;
+    background-color:rgb(73,200,242);
+    border-bottom-right-radius: 0.7rem;
+    border-top-right-radius: 0.7rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    transform: translateX(-103%);
     
-    .layout{
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        background-color: rgba(15, 15, 15, 0.5);
-        position: fixed;
-        top:0;
-        display: none;
-        cursor: pointer;
-        transition: 0.4s;
+    transition: 0.4s;
+    cursor: pointer;
+}
 
-    }
-    .unhide-layout{
-        display: block;
-    }
-
-    /*CSS Button*/
-
+.me{
+    width: 10rem;
+    height: 10rem;
+    background-image: url('./logoteam.jpg');
+   margin: 2rem;
+    background-size: cover;
+    border-radius: 50%;
     
+}
 
-    .col-sm-10{
-        transform: translateX(-10%);
-        transition: 0.5s;
-    }
-    .border-me{
-        width: 130rem;
-        height: 10rem;
-        background-color:rgb(73,200,242);
-        border-bottom-right-radius: 0.7rem;
-        border-top-right-radius: 0.7rem;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        position: fixed;
-        transform: translateX(-103%);
-        
-        transition: 0.4s;
-        cursor: pointer;
-    }
+.rotate-item{
+    animation: rotate 4s linear 0s infinite;
+    -webkit-animation: rotate 4s linear 0s infinite;
+    -moz-animation: rotate2 4s linear 0s infinite;
+    -o-animation: rotate2 4s linear 0s infinite; 
+}
 
-    .me{
-        width: 10rem;
-        height: 10rem;
-        background-image: url('./logoteam.jpg');
-       margin: 2rem;
-        background-size: cover;
-        border-radius: 50%;
-        
-    }
+/*CSS title main*/
 
-    .rotate-item{
-        animation: rotate 4s linear 0s infinite;
-        -webkit-animation: rotate 4s linear 0s infinite;
-        -moz-animation: rotate2 4s linear 0s infinite;
-        -o-animation: rotate2 4s linear 0s infinite; 
-    }
 
-    /*CSS title main*/
+.title{
+    width: 100%;
+    font-size: 3.5rem;
+    padding: 3rem;
+    text-align: center;
+    margin: 0;
     
+}
+h1{
+    font-weight: 900;
     
-    .title{
-        width: 100%;
-        font-size: 3.5rem;
-        padding: 3rem;
-        text-align: center;
-        margin: 0;
-        
-    }
-    h1{
-        font-weight: 900;
-        
-    }
+}
 
-    /*CSS file update*/
+/*CSS file update*/
 
-    .file-upadate{
-        background-color: rgb(73,200,242);
-        padding: 2rem;
-        height: 40%;
-        width: 70%;
-        margin: 0 auto 1.5rem auto;
+.file-upadate{
+    background-color: rgb(73,200,242);
+    padding: 2rem;
+    height: 40%;
+    width: 70%;
+    margin: 0 auto 1.5rem auto;
 
-    }
-    .bor{
-        background-color: rgb(66,180,217);
-        display: flex;
-        border: 0.1rem dashed rgb(46, 121, 146);
-        height: 100%;
-        width: 100%;
-        font-size: 3rem;
-        justify-content: center;
-        
-        align-items: center;
-
-
-    }
-
-    .upload-btn-wrapper {
-        position: relative;
-        overflow: hidden;
-        display: inline-block;
-    }
+}
+.bor{
+    background-color: rgb(66,180,217);
+    display: flex;
+    border: 0.1rem dashed rgb(46, 121, 146);
+    height: 100%;
+    width: 100%;
+    font-size: 3rem;
+    justify-content: center;
     
-    .btn {
-        border: 0.32rem solid gray;
-        color: gray;
-        background-color: white;
-        padding: 0.8rem 2rem;
-        border-radius: 0.8rem;
-        font-size: 2rem;
-        font-weight: bold;
-        cursor: pointer;
-    }
+    align-items: center;
+
+
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+
+
+/*CSS Table*/
+.divtable{
+    width: 100%;
+    transform: translate(5%);
+    margin-top: 10rem;
     
-    .upload-btn-wrapper input[type=file] {
-        font-size: 10rem;
-        position: absolute;
-        left: 0;
-        top: 0;
-        opacity: 0;
-        cursor: pointer;
-        
-    }
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border: 0.2rem solid rgb(46, 121, 146) ;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 900;
+}
 
-    /*CSS Table*/
-    .divtable{
-        width: 100%;
-        transform: translate(5%);
-        margin-top: 10rem;
-        
-    }
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        border: 0.2rem solid rgb(46, 121, 146) ;
-        width: 100%;
-        font-size: 2rem;
-        font-weight: 900;
-    }
+th{
+    border: 0.2rem solid  rgb(46, 121, 146);
+    text-align: center;
+    padding: 0.8rem;
+    height: 5rem;
+    font-size: 2rem;
+}
+td {
+    border: 0.2rem solid  rgb(46, 121, 146);
+    text-align: center;
+    padding: 0.8rem;
+    width: 3rem;
+    height: 5rem;
+    font-size: 2rem;
     
-    th{
-        border: 0.2rem solid  rgb(46, 121, 146);
-        text-align: center;
-        padding: 0.8rem;
-        height: 5rem;
-        font-size: 2rem;
-    }
-    td {
-        border: 0.2rem solid  rgb(46, 121, 146);
-        text-align: center;
-        padding: 0.8rem;
-        width: 3rem;
-        height: 5rem;
-        font-size: 2rem;
-        
-    }
-    /*CSS layout*/
-    .layout{
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        background-color: rgba(15, 15, 15, 0.5);
-        position: fixed;
-        top:0;
-        display: none;
-        cursor: pointer;
-        transition: 0.4s;
+}
+/*CSS layout*/
+.layout{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(15, 15, 15, 0.5);
+    position: fixed;
+    top:0;
+    display: none;
+    cursor: pointer;
+    transition: 0.4s;
 
-    }
-    .unhide-layout{
-        display: block;
-    }
+}
+.unhide-layout{
+    display: block;
+}
 
-    /*CSS SIDEBAR PUSH*/
-    .push-bar{
-        transform: translateX(0);
-    }
-    .push-content{
-        transform: translateX(0);
-    }
-    .push-btn{
-        transform: translateX(-90%);
-        z-index: 2;
-    }
+/*CSS SIDEBAR PUSH*/
+.push-bar{
+    transform: translateX(0);
+}
+.push-content{
+    transform: translateX(0);
+}
+.push-btn{
+    transform: translateX(-90%);
+    z-index: 2;
+}
