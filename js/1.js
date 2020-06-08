@@ -1,17 +1,18 @@
+
 function addRow(tableId, name, size, loc, ploc, lloc, comment) {
-    var row = tableId.insertRow(-1);
+    var row = tableId.insertRow(1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
     var cell5 = row.insertCell(4);
     var cell6 = row.insertCell(5);
-    let nameText = document.createTextNode(name);
-    let sizeText = document.createTextNode(size);
-    let locText = document.createTextNode(loc);
-    let plocText = document.createTextNode(ploc);
-    let llocText = document.createTextNode(lloc);
-    let commentText = document.createTextNode(comment);
+    var nameText = document.createTextNode(name);
+    var sizeText = document.createTextNode(size);
+    var locText = document.createTextNode(loc);
+    var plocText = document.createTextNode(ploc);
+    var llocText = document.createTextNode(lloc);
+    var commentText = document.createTextNode(comment);
     cell1.appendChild(nameText);
     cell2.appendChild(sizeText);
     cell3.appendChild(locText);
@@ -23,18 +24,24 @@ function addRow(tableId, name, size, loc, ploc, lloc, comment) {
 document.querySelector('input').addEventListener("change", function (event) {
     var table = document.getElementById("myTable");
     var lines;
-    let fileArr = event.target.files;
+    var fileArr = event.target.files;
     var java = /(\.java)/;
+    var name, size;
+    var nameArr = [];
+    var sizeArr = [];
+    var temp = 0;
+    
     for (var i = 0; i < fileArr.length; i++) {
         var linenull = 0;
         var comment = 0;
         var logic = 0;
         var block = 0;
         var ploc = 0;
-        var name, size;
+
+
         if (java.exec(fileArr[i].name)) {
-            name = fileArr[i].name;
-            size = fileArr[i].size + " byte";
+            nameArr.push(fileArr[i].name);
+            sizeArr.push(fileArr[i].size + " byte");
             const reader = new FileReader();
             reader.readAsText(fileArr[i]);
             reader.onload = function (e) {
@@ -48,8 +55,8 @@ document.querySelector('input').addEventListener("change", function (event) {
                 //đếm comment line
                 for (x of lines) {
                     if (x.indexOf('//') !== -1) {
-                        console.log('-----------------------------------------------------------');
-                        console.log(x);
+                        // console.log('-----------------------------------------------------------');
+                        // console.log(x);
                         comment++;
                     }
                 }
@@ -59,32 +66,32 @@ document.querySelector('input').addEventListener("change", function (event) {
                             if (lines[j].indexOf('*/') !== -1) {
                                 comment++;
                                 i = j;
-                                console.log('-----------------------------------------------------------');
-                                console.log(lines[j]);
+                                // console.log('-----------------------------------------------------------');
+                                // console.log(lines[j]);
                                 break;
                             }
                             else
                                 if (lines[j].charAt(lines[j].length - 1) === ";") {
                                     logic--;
                                 }
-                            console.log('-----------------------------------------------------------');
-                            console.log(lines[j]);
+                            // console.log('-----------------------------------------------------------');
+                            // console.log(lines[j]);
                             comment++;
                         }
                     }
                 }
-                console.log("comment: " + comment);
+                // console.log("comment: " + comment);
 
                 // đếm các lệnh có ;
                 for (x of lines) {
                     if (x.charAt(x.length - 1) === ";") {
-                        console.log(x);
-                        console.log('-------------------------------------------');
+                        // console.log(x);
+                        // console.log('-------------------------------------------');
                         logic++;
                     }
                 }
-                console.log('---------------------------------------------');
-                console.log("lenh co ; : " + logic);
+                // console.log('---------------------------------------------');
+                // console.log("lenh co ; : " + logic);
                 //đếm các khối lệnh
                 for (x of lines) {
                     if (x.indexOf('{') !== -1 && x.indexOf('//') === -1) {
@@ -95,26 +102,34 @@ document.querySelector('input').addEventListener("change", function (event) {
                 }
                 logic = logic + block;
                 ploc = lines.length - linenull - comment;
-
-                console.log("block: " + block);
-                console.log("********************************************************************************************");
-                console.log("LOC: " + lines.length);
-                console.log("PLOC: " + ploc);
-                console.log("LOGIC: " + logic);
-                console.log("COMMENT: " + comment);
-                console.log("*********************************************************************************");
-                addRow(table, name, size, lines.length, ploc, logic, comment);
+                // console.log("block: " + block);
+                // console.log("********************************************************************************************");
+                // console.log("LOC: " + lines.length);
+                // console.log("PLOC: " + ploc);
+                // console.log("LOGIC: " + logic);
+                // console.log("COMMENT: " + comment);
+                // console.log("*********************************************************************************");
+                // console.log(nameArr[temp]);
+                // console.log(sizeArr[temp]);
+                // console.log(temp);
+                
+                addRow(table, nameArr[temp], sizeArr[temp], lines.length, ploc, logic, comment);
                 linenull = 0;
                 comment = 0;
                 logic = 0;
                 block = 0;
                 ploc = 0;
-                console.log(name);
-                console.log(size);
+                temp++;
+
             }
 
         }
+
+
+
     }
+    
+
 }, false);
 
 // JS FRONTEND
