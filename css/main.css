@@ -7,7 +7,14 @@ html, body{
 }
 body{
     background-image: url(back.jpg);
-    background-size: cover;
+   
+    background-position: 0px 0px;
+	background-repeat: repeat-x;
+ 
+	animation: animatedBackground 10s linear infinite;
+	-ms-animation: animatedBackground 10s linear infinite;
+	-moz-animation: animatedBackground 10s linear infinite;
+	-webkit-animation: animatedBackground 10s linear infinite;
 }
 .container-fluid{
     height: 100%;
@@ -68,17 +75,17 @@ h3{
     transition: 0.4s;
 
 }
-.unhide-layout{
-    display: block;
-}
+
 
 /*CSS Button*/
 
-
+.inputfile{
+    margin-left: 200px;
+}
 
 .col-sm-10{
     transform: translateX(-10%);
-    transition: 0.5s;
+    
 }
 .border-me{
     width: 130rem;
@@ -123,9 +130,12 @@ h3{
     text-align: center;
     margin: 0;
     
+    
 }
-h1{
-    font-weight: 900;
+.title img{
+    transition: 0.4s;
+
+    
     
 }
 
@@ -153,11 +163,7 @@ h1{
 
 }
 
-.upload-btn-wrapper {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-}
+
 
 
 
@@ -221,3 +227,25 @@ td {
     transform: translateX(-90%);
     z-index: 2;
 }
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+@-webkit-keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+@-ms-keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+@-moz-keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+/*CSS TITLE*/
