@@ -59,6 +59,8 @@ document.querySelector('input').addEventListener("change", function (event) {
         var logic = 0;
         var block = 0;
         var ploc = 0;
+        if(not.exec(fileArr[i].name)){}
+        else
         if (java.exec(fileArr[i].name) || cShap.exec(fileArr[i].name) || cPlusPlus.exec(fileArr[i].name) || text.exec(fileArr[i].name)) {
             nameArr.push(fileArr[i].name);
             sizeArr.push(fileArr[i].size + " byte");
