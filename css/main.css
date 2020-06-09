@@ -78,10 +78,21 @@ h3{
 
 
 /*CSS Button*/
-
-.inputfile{
-    margin-left: 200px;
+.border-ip{
+    border:2px solid rgb(58,205,249);
+    width: 400px;
+    color:white;
+    border-radius: 5px;
+    
 }
+::-webkit-file-upload-button {
+    background: rgb(58,205,249);
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    border:2px solid rgb(58,205,249);
+  }
+
 
 .col-sm-10{
     transform: translateX(-10%);
@@ -157,7 +168,7 @@ h3{
     width: 100%;
     font-size: 3rem;
     justify-content: center;
-    
+
     align-items: center;
 
 
