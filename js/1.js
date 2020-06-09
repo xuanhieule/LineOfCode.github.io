@@ -46,7 +46,8 @@ document.querySelector('input').addEventListener("change", function (event) {
     var fileArr = event.target.files;
     var java = /(\.java)/;
     var cShap = /(\.cs)/;
-    var not = /(\.csv)/
+    var not = /(\.csv)/;
+    var not1 = /(\.css)/
     var cPlusPlus = /(\.cpp)/;
     var text = /(\.txt)/;;
     var nameArr = [];
@@ -59,110 +60,110 @@ document.querySelector('input').addEventListener("change", function (event) {
         var logic = 0;
         var block = 0;
         var ploc = 0;
-        if(not.exec(fileArr[i].name)){}
+        if (not.exec(fileArr[i].name) || not1.exec(fileArr[i].name)) { }
         else
-        if (java.exec(fileArr[i].name) || cShap.exec(fileArr[i].name) || cPlusPlus.exec(fileArr[i].name) || text.exec(fileArr[i].name)) {
-            nameArr.push(fileArr[i].name);
-            sizeArr.push(fileArr[i].size + " byte");
-            const reader = new FileReader();
-            reader.readAsText(fileArr[i]);
-            reader.onload = function (e) {
-                lines = e.target.result.split(/\r\n|\n/);
-                //đếm các dong trống
-                for (x of lines) {
-                    if (x.trim() === '') {
-                        linenull++;
+            if (java.exec(fileArr[i].name) || cShap.exec(fileArr[i].name) || cPlusPlus.exec(fileArr[i].name) || text.exec(fileArr[i].name)) {
+                nameArr.push(fileArr[i].name);
+                sizeArr.push(fileArr[i].size + " byte");
+                const reader = new FileReader();
+                reader.readAsText(fileArr[i]);
+                reader.onload = function (e) {
+                    lines = e.target.result.split(/\r\n|\n/);
+                    //đếm các dong trống
+                    for (x of lines) {
+                        if (x.trim() === '') {
+                            linenull++;
+                        }
                     }
-                }
-                //đếm comment line
-                for (x of lines) {
-                    if (x.indexOf('//') !== -1) {
-                        // console.log('-----------------------------------------------------------');
-                        // console.log(x);
-                        comment++;
-                    }
-                }
-                for (var i = 0; i < lines.length; i++) {
-                    if (lines[i].indexOf('/*') !== -1) {
-                        for (var j = i; j < lines.length; j++) {
-                            if (lines[j].indexOf('*/') !== -1) {
-                                comment++;
-                                i = j;
-                                // console.log('-----------------------------------------------------------');
-                                // console.log(lines[j]);
-                                break;
-                            }
-                            else
-                                if (lines[j].charAt(lines[j].length - 1) === ";") {
-                                    logic--;
-                                }
+                    //đếm comment line
+                    for (x of lines) {
+                        if (x.indexOf('//') !== -1) {
                             // console.log('-----------------------------------------------------------');
-                            // console.log(lines[j]);
+                            // console.log(x);
                             comment++;
                         }
                     }
-                }
-                // console.log("comment: " + comment);
-
-                // đếm các lệnh có ;
-                for (x of lines) {
-                    if (x.charAt(x.length - 1) === ";") {
-                        // console.log(x);
-                        // console.log('-------------------------------------------');
-                        logic++;
-                    }
-                    for (var a = 0; a < x.length - 1; a++) {
-                        if (x.charAt(a) === ";") {
-
-                            logic++;
+                    for (var i = 0; i < lines.length; i++) {
+                        if (lines[i].indexOf('/*') !== -1) {
+                            for (var j = i; j < lines.length; j++) {
+                                if (lines[j].indexOf('*/') !== -1) {
+                                    comment++;
+                                    i = j;
+                                    // console.log('-----------------------------------------------------------');
+                                    // console.log(lines[j]);
+                                    break;
+                                }
+                                else
+                                    if (lines[j].charAt(lines[j].length - 1) === ";") {
+                                        logic--;
+                                    }
+                                // console.log('-----------------------------------------------------------');
+                                // console.log(lines[j]);
+                                comment++;
+                            }
                         }
                     }
-                    // for (var k = 0; k < x.length-1; k++) {
-                    //     if (x.charAt(k) === '"' || x.charAt(k) === "'") {
-                    //          for (var l = k + 1; l < x.length-1; l++) {
-                    //             if (x.charAt(l) === '"' || x.charAt(l) === "'") {
-                    //                 console.log(x.charAt());
-                    //                 for (var h = l - 1; h >= 1; h--) {
-                    //                     if (x.charAt(h) === ";") {
-                    //                         logic--;
-                    //                     }
-                    //                }
-                    //              }
-                    //          }
-                    //     }
-                    // }
-                }
-                // console.log('---------------------------------------------');
-                // console.log("lenh co ; : " + logic);
-                //đếm các khối lệnh
-                for (x of lines) {
-                    if (x.indexOf('{') !== -1 && x.indexOf('//') === -1) {
-                        // console.log(x);
-                        console.log('-----------------------------------------------------------------');
-                        block++;
-                    
+                    // console.log("comment: " + comment);
+
+                    // đếm các lệnh có ;
+                    for (x of lines) {
+                        if (x.charAt(x.length - 1) === ";") {
+                            // console.log(x);
+                            // console.log('-------------------------------------------');
+                            logic++;
+                        }
+                        for (var a = 0; a < x.length - 1; a++) {
+                            if (x.charAt(a) === ";") {
+
+                                logic++;
+                            }
+                        }
+                        // for (var k = 0; k < x.length-1; k++) {
+                        //     if (x.charAt(k) === '"' || x.charAt(k) === "'") {
+                        //          for (var l = k + 1; l < x.length-1; l++) {
+                        //             if (x.charAt(l) === '"' || x.charAt(l) === "'") {
+                        //                 console.log(x.charAt());
+                        //                 for (var h = l - 1; h >= 1; h--) {
+                        //                     if (x.charAt(h) === ";") {
+                        //                         logic--;
+                        //                     }
+                        //                }
+                        //              }
+                        //          }
+                        //     }
+                        // }
                     }
+                    // console.log('---------------------------------------------');
+                    // console.log("lenh co ; : " + logic);
+                    //đếm các khối lệnh
+                    for (x of lines) {
+                        if (x.indexOf('{') !== -1 && x.indexOf('//') === -1) {
+                            // console.log(x);
+                            console.log('-----------------------------------------------------------------');
+                            block++;
+
+                        }
+                    }
+                    logic = logic + block;
+                    ploc = lines.length - linenull - comment;
+                    // console.log("block: " + block);
+                    // console.log("********************************************************************************************");
+                    // console.log("LOC: " + lines.length);
+                    // console.log("PLOC: " + ploc);
+                    // console.log("LOGIC: " + logic);
+                    // console.log("COMMENT: " + comment);
+                    // console.log("*********************************************************************************");
+                    // console.log(nameArr[temp]);
+                    // console.log(sizeArr[temp]);
+                    // console.log(temp);
+                    addRow(table, nameArr[temp], sizeArr[temp], lines.length, ploc, logic, comment);
+                    linenull = 0;
+                    comment = 0;
+                    logic = 0;
+                    block = 0;
+                    ploc = 0;
+                    temp++;
                 }
-                logic = logic + block;
-                ploc = lines.length - linenull - comment;
-                // console.log("block: " + block);
-                // console.log("********************************************************************************************");
-                // console.log("LOC: " + lines.length);
-                // console.log("PLOC: " + ploc);
-                // console.log("LOGIC: " + logic);
-                // console.log("COMMENT: " + comment);
-                // console.log("*********************************************************************************");
-                // console.log(nameArr[temp]);
-                // console.log(sizeArr[temp]);
-                // console.log(temp);
-                addRow(table, nameArr[temp], sizeArr[temp], lines.length, ploc, logic, comment);
-                linenull = 0;
-                comment = 0;
-                logic = 0;
-                block = 0;
-                ploc = 0;
-                temp++;
             }
-        }
     }
 }, false);
