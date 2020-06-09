@@ -1,3 +1,22 @@
+// JS FRONTEND
+document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.querySelector('.border-me');
+    var sidebar = document.querySelectorAll(".col-sm-2");
+    var contentMain = document.querySelectorAll(".col-sm-10");
+    var layout = document.querySelectorAll(".layout");
+    btn.onclick = function () {
+        contentMain[0].classList.toggle('push-content');
+        sidebar[0].classList.toggle('push-bar');
+        layout[0].classList.toggle('unhide-layout');
+        btn.classList.toggle('push-btn');
+    }
+    layout[0].onclick = function () {
+        contentMain[0].classList.toggle('push-content');
+        sidebar[0].classList.toggle('push-bar');
+        layout[0].classList.toggle('unhide-layout');
+        btn.classList.toggle('push-btn');
+    }
+}, false);
 
 function addRow(tableId, name, size, loc, ploc, lloc, comment) {
     var row = tableId.insertRow(1);
@@ -20,13 +39,16 @@ function addRow(tableId, name, size, loc, ploc, lloc, comment) {
     cell5.appendChild(llocText);
     cell6.appendChild(commentText);
 }
-
+//js Upload
 document.querySelector('input').addEventListener("change", function (event) {
     var table = document.getElementById("myTable");
     var lines;
     var fileArr = event.target.files;
     var java = /(\.java)/;
-    var name, size;
+    var cShap = /(\.cs)/;
+    var not = /(\.csv)/
+    var cPlusPlus = /(\.cpp)/;
+    var text = /(\.txt)/;;
     var nameArr = [];
     var sizeArr = [];
     var temp = 0;
@@ -37,9 +59,7 @@ document.querySelector('input').addEventListener("change", function (event) {
         var logic = 0;
         var block = 0;
         var ploc = 0;
-
-
-        if (java.exec(fileArr[i].name)) {
+        if (java.exec(fileArr[i].name) || cShap.exec(fileArr[i].name) || cPlusPlus.exec(fileArr[i].name) || text.exec(fileArr[i].name)) {
             nameArr.push(fileArr[i].name);
             sizeArr.push(fileArr[i].size + " byte");
             const reader = new FileReader();
@@ -89,32 +109,26 @@ document.querySelector('input').addEventListener("change", function (event) {
                         // console.log('-------------------------------------------');
                         logic++;
                     }
-                    for (var a = 0; a < x.length-1; a++) {
+                    for (var a = 0; a < x.length - 1; a++) {
                         if (x.charAt(a) === ";") {
-                        
+
                             logic++;
                         }
                     }
                     // for (var k = 0; k < x.length-1; k++) {
                     //     if (x.charAt(k) === '"' || x.charAt(k) === "'") {
-                            
                     //          for (var l = k + 1; l < x.length-1; l++) {
                     //             if (x.charAt(l) === '"' || x.charAt(l) === "'") {
                     //                 console.log(x.charAt());
-                                    
                     //                 for (var h = l - 1; h >= 1; h--) {
-                                        
                     //                     if (x.charAt(h) === ";") {
                     //                         logic--;
                     //                     }
                     //                }
                     //              }
                     //          }
-                            
                     //     }
-
                     // }
-
                 }
                 // console.log('---------------------------------------------');
                 // console.log("lenh co ; : " + logic);
@@ -124,8 +138,8 @@ document.querySelector('input').addEventListener("change", function (event) {
                         // console.log(x);
                         console.log('-----------------------------------------------------------------');
                         block++;
+                    
                     }
-
                 }
                 logic = logic + block;
                 ploc = lines.length - linenull - comment;
@@ -139,7 +153,6 @@ document.querySelector('input').addEventListener("change", function (event) {
                 // console.log(nameArr[temp]);
                 // console.log(sizeArr[temp]);
                 // console.log(temp);
-
                 addRow(table, nameArr[temp], sizeArr[temp], lines.length, ploc, logic, comment);
                 linenull = 0;
                 comment = 0;
@@ -147,34 +160,7 @@ document.querySelector('input').addEventListener("change", function (event) {
                 block = 0;
                 ploc = 0;
                 temp++;
-
             }
-
         }
-
-
-
-    }
-
-
-}, false);
-
-// JS FRONTEND
-document.addEventListener("DOMContentLoaded", function () {
-    var btn = document.querySelector('.border-me');
-    var sidebar = document.querySelectorAll(".col-sm-2");
-    var contentMain = document.querySelectorAll(".col-sm-10");
-    var layout = document.querySelectorAll(".layout");
-    btn.onclick = function () {
-        contentMain[0].classList.toggle('push-content');
-        sidebar[0].classList.toggle('push-bar');
-        layout[0].classList.toggle('unhide-layout');
-        btn.classList.toggle('push-btn');
-    }
-    layout[0].onclick = function () {
-        contentMain[0].classList.toggle('push-content');
-        sidebar[0].classList.toggle('push-bar');
-        layout[0].classList.toggle('unhide-layout');
-        btn.classList.toggle('push-btn');
     }
 }, false);
