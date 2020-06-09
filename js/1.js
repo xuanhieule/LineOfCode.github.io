@@ -30,7 +30,7 @@ document.querySelector('input').addEventListener("change", function (event) {
     var nameArr = [];
     var sizeArr = [];
     var temp = 0;
-    
+
     for (var i = 0; i < fileArr.length; i++) {
         var linenull = 0;
         var comment = 0;
@@ -89,6 +89,32 @@ document.querySelector('input').addEventListener("change", function (event) {
                         // console.log('-------------------------------------------');
                         logic++;
                     }
+                    for (var a = 0; a < x.length-1; a++) {
+                        if (x.charAt(a) === ";") {
+                        
+                            logic++;
+                        }
+                    }
+                    // for (var k = 0; k < x.length-1; k++) {
+                    //     if (x.charAt(k) === '"' || x.charAt(k) === "'") {
+                            
+                    //          for (var l = k + 1; l < x.length-1; l++) {
+                    //             if (x.charAt(l) === '"' || x.charAt(l) === "'") {
+                    //                 console.log(x.charAt());
+                                    
+                    //                 for (var h = l - 1; h >= 1; h--) {
+                                        
+                    //                     if (x.charAt(h) === ";") {
+                    //                         logic--;
+                    //                     }
+                    //                }
+                    //              }
+                    //          }
+                            
+                    //     }
+
+                    // }
+
                 }
                 // console.log('---------------------------------------------');
                 // console.log("lenh co ; : " + logic);
@@ -99,6 +125,7 @@ document.querySelector('input').addEventListener("change", function (event) {
                         console.log('-----------------------------------------------------------------');
                         block++;
                     }
+
                 }
                 logic = logic + block;
                 ploc = lines.length - linenull - comment;
@@ -112,7 +139,7 @@ document.querySelector('input').addEventListener("change", function (event) {
                 // console.log(nameArr[temp]);
                 // console.log(sizeArr[temp]);
                 // console.log(temp);
-                
+
                 addRow(table, nameArr[temp], sizeArr[temp], lines.length, ploc, logic, comment);
                 linenull = 0;
                 comment = 0;
@@ -128,7 +155,7 @@ document.querySelector('input').addEventListener("change", function (event) {
 
 
     }
-    
+
 
 }, false);
 
