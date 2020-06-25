@@ -11,10 +11,10 @@ body{
     background-position: 0px 0px;
 	background-repeat: repeat-x;
  
-	animation: animatedBackground 25s linear infinite;
-	-ms-animation: animatedBackground 25s linear infinite;
-	-moz-animation: animatedBackground 25s linear infinite;
-	-webkit-animation: animatedBackground 25s linear infinite;
+	animation: animatedBackground 20s linear infinite;
+	-ms-animation: animatedBackground 20s linear infinite;
+	-moz-animation: animatedBackground 20s linear infinite;
+	-webkit-animation: animatedBackground 20s linear infinite;
 }
 .container-fluid{
     height: 100%;
@@ -113,6 +113,21 @@ h3{
     transition: 0.4s;
     cursor: pointer;
 }
+.btnreset{
+    width: 13rem;
+    height: 5rem;
+    background-color:rgb(73,200,242);
+    font-size: 2rem;
+    margin-left: 40%;
+    margin-bottom: 3rem;
+    border-radius: 5px ;
+    border: 1px solid rgb(73,200,242) ;
+    
+}
+.btnreset:hover{
+    background-color:rgb(10, 117, 153);
+
+}
 
 .me{
     width: 10rem;
@@ -182,7 +197,7 @@ h3{
 .divtable{
     width: 100%;
     transform: translate(5%);
-    margin-top: 10rem;
+    margin-top: 3rem;
     
 }
 table {
@@ -258,5 +273,6 @@ td {
 	from { background-position: 0 0; }
 	to { background-position: 100% 0; }
 }
+
 
 /*CSS TITLE*/
